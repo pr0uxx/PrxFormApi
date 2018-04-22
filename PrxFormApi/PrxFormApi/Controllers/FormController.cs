@@ -12,6 +12,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
 using System.Web;
 using PrxFormApi.Models;
+using Newtonsoft.Json;
+using Microsoft.Owin.Host.SystemWeb;
 
 namespace PrxFormApi.Controllers
 {
@@ -30,24 +32,55 @@ namespace PrxFormApi.Controllers
             this.customerRepository = customerRepository;
         }
 
-        public IHttpActionResult AddCustomer(Customer customer)
+        [Throttle(Message = "You must wait 60 seconds befor adding a new customer", Name ="AddCustomerThrottle", Seconds = 60)]
+        [AllowAnonymous]
+        [Route("api/Form/AddCustomer")]
+        public IHttpActionResult AddCustomer(Customer customer, string email)
+        {
+            //var userId = User.Identity.GetUserId();
+
+            var manager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var user = manager.FindByEmail(email);
+            customer.UserId = user.Id;
+
+            if (user.Email.Equals(email, StringComparison.OrdinalIgnoreCase))
+            {
+                try
+                {
+                    customerRepository.InsertCustomer(customer);
+                    customerRepository.Save();
+                    return Content(HttpStatusCode.OK, "");
+                }
+                catch (Exception ex)
+                {
+                    return Content(HttpStatusCode.InternalServerError, ex.Message);
+                }
+            }
+            else
+            {
+                return Content(HttpStatusCode.Forbidden, "Invalid Email");
+            }
+
+            
+        }
+
+        [Route("api/Form/GetAllCustomers")]
+        public IHttpActionResult GetCustomers()
         {
             var userId = User.Identity.GetUserId();
 
-            customer.UserId = userId;
+            var customers = customerRepository.GetCustomerByUserID(userId);
 
-            try
+            if (customers.Count() > 0)
             {
-                customerRepository.InsertCustomer(customer);
-                customerRepository.Save();
-                return Content(HttpStatusCode.OK, "");
-            }
-            catch (Exception ex)
-            {
-                return Content(HttpStatusCode.InternalServerError, ex.Message);
-            }
-            
+                var result = JsonConvert.SerializeObject(customers);
 
+                return Content(HttpStatusCode.OK, result);
+            }
+            else
+            {
+                return Content(HttpStatusCode.NoContent, "No results");
+            }
         }
     }
 }

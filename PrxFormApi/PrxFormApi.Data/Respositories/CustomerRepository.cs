@@ -69,5 +69,10 @@ namespace PrxFormApi.Data.Respositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        public IEnumerable<Customer> GetCustomerByUserID(string UserId)
+        {
+            return context.Customers.Where(x => x.UserId.Equals(UserId)).ToList();
+        }
     }
 }

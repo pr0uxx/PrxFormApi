@@ -11,6 +11,7 @@ namespace PrxFormApi.Data.Repositories
     {
         IEnumerable<Customer> GetCustomers();
         Customer GetCustomerByID(int CustomerId);
+        IEnumerable<Customer> GetCustomerByUserID(string UserId);
         void InsertCustomer(Customer Customer);
         void DeleteCustomer(int CustomerID);
         void UpdateCustomer(Customer Customer);
