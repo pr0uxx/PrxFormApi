@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrxFormApi", "PrxFormApi\Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrxFormApi.Tests", "PrxFormApi.Tests\PrxFormApi.Tests.csproj", "{20FC21CA-F8BF-4866-8A64-70E89BFCA44C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrxFormApi.Data", "PrxFormApi.Data\PrxFormApi.Data.csproj", "{9827FA12-7641-4168-A860-6E6FF77C40BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{20FC21CA-F8BF-4866-8A64-70E89BFCA44C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20FC21CA-F8BF-4866-8A64-70E89BFCA44C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20FC21CA-F8BF-4866-8A64-70E89BFCA44C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9827FA12-7641-4168-A860-6E6FF77C40BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9827FA12-7641-4168-A860-6E6FF77C40BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9827FA12-7641-4168-A860-6E6FF77C40BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9827FA12-7641-4168-A860-6E6FF77C40BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
