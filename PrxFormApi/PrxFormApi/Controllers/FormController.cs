@@ -1,5 +1,4 @@
 ﻿using PrxFormApi.Data.Context;
-using PrxFormApi.Data.Entities;
 using PrxFormApi.Data.Repositories;
 using PrxFormApi.Data.Respositories;
 using System;
@@ -14,6 +13,7 @@ using System.Web;
 using PrxFormApi.Models;
 using Newtonsoft.Json;
 using Microsoft.Owin.Host.SystemWeb;
+using PrxFormApi.Data.Models;
 
 namespace PrxFormApi.Controllers
 {
@@ -24,7 +24,8 @@ namespace PrxFormApi.Controllers
 
         public FormController()
         {
-            this.customerRepository = new CustomerRepository(new DatabaseContext());
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            this.customerRepository = new CustomerRepository(new DatabaseContext(connectionString));
         }
 
         public FormController(ICustomerRepository customerRepository)
@@ -35,7 +36,7 @@ namespace PrxFormApi.Controllers
         [Throttle(Message = "You must wait 60 seconds befor adding a new customer", Name ="AddCustomerThrottle", Seconds = 60)]
         [AllowAnonymous]
         [Route("api/Form/AddCustomer")]
-        public IHttpActionResult AddCustomer(Customer customer, string email)
+        public IHttpActionResult AddCustomer(CustomerModel customer, string email)
         {
             //var userId = User.Identity.GetUserId();
 

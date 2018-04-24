@@ -1,5 +1,5 @@
 ﻿using PrxFormApi.Data.Context;
-using PrxFormApi.Data.Entities;
+using PrxFormApi.Data.Models;
 using PrxFormApi.Data.Repositories;
 using System;
 using System.Collections.Generic;
@@ -19,28 +19,28 @@ namespace PrxFormApi.Data.Respositories
             this.context = context;
         }
 
-        public IEnumerable<Customer> GetCustomers()
+        public IEnumerable<CustomerModel> GetCustomers()
         {
             return context.Customers.ToList();
         }
 
-        public Customer GetCustomerByID(int id)
+        public CustomerModel GetCustomerByID(int id)
         {
             return context.Customers.Find(id);
         }
 
-        public void InsertCustomer(Customer Customer)
+        public void InsertCustomer(CustomerModel Customer)
         {
             context.Customers.Add(Customer);
         }
 
         public void DeleteCustomer(int CustomerID)
         {
-            Customer Customer = context.Customers.Find(CustomerID);
+            CustomerModel Customer = context.Customers.Find(CustomerID);
             context.Customers.Remove(Customer);
         }
 
-        public void UpdateCustomer(Customer Customer)
+        public void UpdateCustomer(CustomerModel Customer)
         {
             context.Entry(Customer).State = EntityState.Modified;
         }
@@ -70,7 +70,7 @@ namespace PrxFormApi.Data.Respositories
             GC.SuppressFinalize(this);
         }
 
-        public IEnumerable<Customer> GetCustomerByUserID(string UserId)
+        public IEnumerable<CustomerModel> GetCustomerByUserID(string UserId)
         {
             return context.Customers.Where(x => x.UserId.Equals(UserId)).ToList();
         }

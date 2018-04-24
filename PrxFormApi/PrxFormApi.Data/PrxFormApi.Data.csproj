@@ -56,56 +56,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\DatabaseContext.cs" />
-    <Compile Include="Entities\Customer.cs">
-      <DependentUpon>FormApiEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\FormApiEntities.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FormApiEntities.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\FormApiEntities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FormApiEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\FormApiEntities.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FormApiEntities.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Context\DatabaseInitializer.cs" />
+    <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Respositories\CustomerRepository.cs" />
     <Compile Include="Respositories\ICustomerRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Entities\FormApiEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FormApiEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.Config" />
-    <None Include="Entities\FormApiEntities.edmx.diagram">
-      <DependentUpon>FormApiEntities.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Entities\FormApiEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>FormApiEntities.Context.cs</LastGenOutput>
-      <DependentUpon>FormApiEntities.edmx</DependentUpon>
-    </Content>
-    <Content Include="Entities\FormApiEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FormApiEntities.edmx</DependentUpon>
-      <LastGenOutput>FormApiEntities.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Folder Include="Entities\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,4 @@
-﻿using PrxFormApi.Data.Entities;
+﻿using PrxFormApi.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +9,12 @@ namespace PrxFormApi.Data.Repositories
 {
     public interface ICustomerRepository
     {
-        IEnumerable<Customer> GetCustomers();
-        Customer GetCustomerByID(int CustomerId);
-        IEnumerable<Customer> GetCustomerByUserID(string UserId);
-        void InsertCustomer(Customer Customer);
+        IEnumerable<CustomerModel> GetCustomers();
+        CustomerModel GetCustomerByID(int CustomerId);
+        IEnumerable<CustomerModel> GetCustomerByUserID(string UserId);
+        void InsertCustomer(CustomerModel Customer);
         void DeleteCustomer(int CustomerID);
-        void UpdateCustomer(Customer Customer);
+        void UpdateCustomer(CustomerModel Customer);
         void Save();
     }
 }
