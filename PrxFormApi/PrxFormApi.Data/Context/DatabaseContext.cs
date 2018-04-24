@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PrxFormApi.Data.Context
 {
-    public class CustomerContext : DbContext
+    public class DatabaseContext : DbContext
     {
         public DbSet<Customer> Customers { get; set; }
     }

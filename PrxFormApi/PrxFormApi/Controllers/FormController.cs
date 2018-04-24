@@ -24,7 +24,7 @@ namespace PrxFormApi.Controllers
 
         public FormController()
         {
-            this.customerRepository = new CustomerRepository(new CustomerContext());
+            this.customerRepository = new CustomerRepository(new DatabaseContext());
         }
 
         public FormController(ICustomerRepository customerRepository)

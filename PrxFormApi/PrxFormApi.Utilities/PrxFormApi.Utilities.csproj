@@ -54,7 +54,6 @@
   <ItemGroup>
     <Content Include="ActionFilters\todo.txt" />
     <Compile Include="ActionFilters\ThrottleAttribute.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

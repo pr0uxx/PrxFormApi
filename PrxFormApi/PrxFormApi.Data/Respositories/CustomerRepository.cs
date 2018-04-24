@@ -12,9 +12,9 @@ namespace PrxFormApi.Data.Respositories
 {
     public class CustomerRepository : ICustomerRepository, IDisposable
     {
-        private CustomerContext context;
+        private DatabaseContext context;
 
-        public CustomerRepository(CustomerContext context)
+        public CustomerRepository(DatabaseContext context)
         {
             this.context = context;
         }
